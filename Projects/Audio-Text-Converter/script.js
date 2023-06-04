@@ -1,5 +1,4 @@
-var SpeechRecognition = window.webkitSpeechRecognition || window.SpeechRecognition;
-
+var SpeechRecognition = window.webkitSpeechRecognition;
 
 // var myLang = mySpeechRecognition.lang;
 
@@ -15,7 +14,9 @@ recognition.continuous = true;
 
 recognition.onresult = function (event) {
   var current = event.resultIndex;
+
   var transcript = event.results[current][0].transcript;
+
   Content += transcript;
   Textbox.val(Content);
 };
@@ -34,7 +35,6 @@ $("#start").on("click", function (e) {
     recognition.start();
   }
 });
-
 
 Textbox.on("input", function () {
   Content = $(this).val();
